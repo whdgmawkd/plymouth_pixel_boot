@@ -13,23 +13,17 @@ for (i = 480; i <= 720; i++)
   }
 
 index = 0;
-frame = 0;
 sprite = Sprite();
 
 fun refresh_callback ()
   {
-    frame++;
-    if (frame <= 90)
-      {
-        sprite.SetImage(image[index]);
-        sprite.SetX(offsets[index][0] + 240);
-        sprite.SetY(offsets[index][1] - 720);
-        return;
-      }
-    index = frame - 90;
     sprite.SetX(offsets[index][0] + 240);
     sprite.SetY(offsets[index][1] - 720);
     sprite.SetImage(image[index]);
+    if(index < 238)
+      {
+        index++;
+      }
   }
 
 Plymouth.SetRefreshFunction (refresh_callback);
